@@ -42,13 +42,13 @@ export default function Main({ navigation }) {
     setUsers(rest); // mostra todos usuários que estao na variavel rest que já está sem o que ganhou like/dislike
   }
   async function handleDislike() {
-    const [user, ...rest] = users;
+    const [user, ...rest] = users; // o user em [] faz com que pegue a primeira posição do array, o restante vai para a variavel rest
 
     await api.post(`/devs/${user._id}/dislikes`, null, {
       headers: { user: id }
     });
 
-    setUsers(rest);
+    setUsers(rest); // mostra todos usuários que estao na variavel rest que já está sem o que ganhou like/dislike
   }
 
   async function handleLogout() {
@@ -90,8 +90,8 @@ export default function Main({ navigation }) {
       </View>
 
       {users.length > 0 && (
-        <View style={styles.buttonsContainer} onPress={handleDislike}>
-          <TouchableOpacity style={styles.button}>
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.button} onPress={handleDislike}>
             <Image source={dislike} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={handleLike}>
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f5f5f5",
     alignItems: "center",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   logo: {
     marginTop: 30
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     color: "#999",
     fontSize: 24,
-    fontWeight: "bold"
+    fontWeight: "bold",
   },
   cardsContainer: {
     flex: 1,
@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#333"
+    color: "#333",
   },
   bio: {
     fontSize: 14,
